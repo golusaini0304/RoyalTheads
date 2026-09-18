@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ROYAL THREADS | Premium Fashion</title>
+
+    <meta name="description"
+          content="Royal Threads - Premium fashion for modern lifestyles. Shop men's, women's and kids' clothing.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<!-- TOP BAR -->
+
+<div class="topbar">
+    <p>FREE SHIPPING ON ORDERS ABOVE ₹999</p>
+    <span>•</span>
+    <p>COD AVAILABLE</p>
+</div>
+
+
+<!-- NAVBAR -->
+
+<header class="navbar">
+
+    <div class="nav-left">
+        <button class="mobile-menu" onclick="toggleMobileMenu()">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <a href="#" class="logo">
+            <span>ROYAL</span>
+            <small>THREADS</small>
+        </a>
+    </div>
+
+    <nav class="nav-links" id="navLinks">
+
+        <a href="#home">Home</a>
+
+        <a href="#collection">New Arrivals</a>
+
+        <a href="#collection" onclick="filterProducts('Men')">Men</a>
+
+        <a href="#collection" onclick="filterProducts('Women')">Women</a>
+
+        <a href="#collection" onclick="filterProducts('Kids')">Kids</a>
+
+        <a href="#about">About</a>
+
+    </nav>
+
+    <div class="nav-actions">
+
+        <button onclick="openSearch()" aria-label="Search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+
+        <button onclick="showWishlist()" aria-label="Wishlist">
+            <i class="fa-regular fa-heart"></i>
+            <span class="nav-count" id="wishlistCount">0</span>
+        </button>
+
+        <button onclick="openCart()" aria-label="Shopping Cart">
+            <i class="fa-solid fa-bag-shopping"></i>
+            <span class="nav-count" id="cartCount">0</span>
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- SEARCH -->
+
+<div class="search-overlay" id="searchOverlay">
+
+    <button class="close-search" onclick="closeSearch()">
+        <i class="fa-solid fa-xmark"></i>
+    </button>
+
+    <div class="search-box">
+
+        <span>SEARCH</span>
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search products..."
+            onkeyup="searchProducts()">
+
+    </div>
+
+</div>
+
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+    <div class="hero-image"></div>
+
+    <div class="hero-content">
+
+        <p class="eyebrow">AUTUMN / WINTER 2026</p>
+
+        <h1>
+            STYLE THAT
+            <br>
+            <em>defines you.</em>
+        </h1>
+
+        <p class="hero-description">
+            Discover carefully selected pieces designed for
+            confidence, comfort and everyday luxury.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="#collection" class="btn btn-dark">
+                SHOP COLLECTION
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+
+            <a href="#about" class="btn btn-light">
+                OUR STORY
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="hero-number">
+        <span>01</span>
+        <div></div>
+        <span>03</span>
+    </div>
+
+</section>
+
+
+<!-- TRUST BAR -->
+
+<section class="trust-bar">
+
+    <div class="trust-item">
+        <i class="fa-solid fa-truck-fast"></i>
+        <div>
+            <strong>Free Shipping</strong>
+            <span>On orders above ₹999</span>
+        </div>
+    </div>
+
+    <div class="trust-item">
+        <i class="fa-solid fa-rotate-left"></i>
+        <div>
+            <strong>Easy Returns</strong>
+            <span>7 day return policy</span>
+        </div>
+    </div>
+
+    <div class="trust-item">
+        <i class="fa-solid fa-shield-halved"></i>
+        <div>
+            <strong>Secure Payment</strong>
+            <span>100% secure checkout</span>
+        </div>
+    </div>
+
+    <div class="trust-item">
+        <i class="fa-solid fa-headset"></i>
+        <div>
+            <strong>Customer Support</strong>
+            <span>We're here to help</span>
+        </div>
+    </div>
+
+</section>
+
+
+<!-- CATEGORIES -->
+
+<section class="categories">
+
+    <div class="section-heading">
+
+        <div>
+            <p class="eyebrow">SHOP BY CATEGORY</p>
+
+            <h2>Find your <em>style.</em></h2>
+        </div>
+
+        <p>
+            Explore our curated collections
+            made for every mood and moment.
+        </p>
+
+    </div>
+
+
+    <div class="category-grid">
+
+        <div class="category-card" onclick="filterProducts('Men')">
+
+            <img
+                src="https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=1000&q=85"
+                alt="Men Fashion">
+
+            <div class="category-content">
+                <span>01</span>
+                <h3>MEN</h3>
+                <button>
+                    EXPLORE
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+
+        </div>
+
+
+        <div class="category-card" onclick="filterProducts('Women')">
+
+            <img
+                src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1000&q=85"
+                alt="Women Fashion">
+
+            <div class="category-content">
+                <span>02</span>
+                <h3>WOMEN</h3>
+                <button>
+                    EXPLORE
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+
+        </div>
+
+
+        <div class="category-card" onclick="filterProducts('Kids')">
+
+            <img
+                src="https://images.unsplash.com/photo-1622290291468-a28f7a7dc6a8?auto=format&fit=crop&w=1000&q=85"
+                alt="Kids Fashion">
+
+            <div class="category-content">
+                <span>03</span>
+                <h3>KIDS</h3>
+                <button>
+                    EXPLORE
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PRODUCTS -->
+
+<section class="products-section" id="collection">
+
+    <div class="section-heading">
+
+        <div>
+            <p class="eyebrow">CURATED FOR YOU</p>
+            <h2>Latest <em>arrivals.</em></h2>
+        </div>
+
+        <div class="filters">
+
+            <button class="filter active"
+                    onclick="filterProducts('All', this)">
+                All
+            </button>
+
+            <button class="filter"
+                    onclick="filterProducts('Men', this)">
+                Men
+            </button>
+
+            <button class="filter"
+                    onclick="filterProducts('Women', this)">
+                Women
+            </button>
+
+            <button class="filter"
+                    onclick="filterProducts('Kids', this)">
+                Kids
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="product-grid" id="productGrid">
+
+        {% for product in products %}
+
+        <article
+            class="product-card"
+            data-category="{{ product.category }}"
+            data-name="{{ product.name|lower }}">
+
+            <div class="product-image">
+
+                <img src="{{ product.image }}"
+                     alt="{{ product.name }}">
+
+                <span class="product-badge">
+                    {{ product.badge }}
+                </span>
+
+                <button
+                    class="wishlist-btn"
+                    onclick="toggleWishlist(this, {{ product.id }})">
+
+                    <i class="fa-regular fa-heart"></i>
+
+                </button>
+
+                <button
+                    class="quick-view"
+                    onclick="quickView({{ product.id }})">
+
+                    QUICK VIEW
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+                </button>
+
+            </div>
+
+
+            <div class="product-info">
+
+                <div class="product-category">
+                    {{ product.category }}
+                </div>
+
+                <h3>{{ product.name }}</h3>
+
+                <div class="rating">
+
+                    <span>
+                        {% for i in range(5) %}
+                            <i class="fa-solid fa-star"></i>
+                        {% endfor %}
+                    </span>
+
+                    <small>
+                        {{ product.rating }} ({{ product.reviews }})
+                    </small>
+
+                </div>
+
+                <div class="product-bottom">
+
+                    <div class="price">
+
+                        <strong>
+                            ₹{{ "{:,}".format(product.price) }}
+                        </strong>
+
+                        <del>
+                            ₹{{ "{:,}".format(product.old_price) }}
+                        </del>
+
+                    </div>
+
+                    <button
+                        class="add-btn"
+                        onclick="addToCart({{ product.id }})">
+
+                        <i class="fa-solid fa-plus"></i>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+
+<!-- SALE BANNER -->
+
+<section class="sale-banner">
+
+    <div class="sale-content">
+
+        <p class="eyebrow">LIMITED TIME OFFER</p>
+
+        <h2>
+            UP TO <span>40% OFF</span>
+        </h2>
+
+        <p>
+            Elevate your wardrobe without breaking the bank.
+            Selected styles only.
+        </p>
+
+        <a href="#collection" class="sale-btn">
+            SHOP SALE
+            <i class="fa-solid fa-arrow-right"></i>
+        </a>
+
+    </div>
+
+    <div class="sale-outline">
+        SALE
+    </div>
+
+</section>
+
+
+<!-- FEATURED -->
+
+<section class="featured">
+
+    <div class="featured-image">
+
+        <img
+            src="https://images.unsplash.com/photo-1485968579580-b6d095142e6e?auto=format&fit=crop&w=1400&q=85"
+            alt="Premium Fashion">
+
+    </div>
+
+    <div class="featured-content">
+
+        <p class="eyebrow">THE ROYAL EDIT</p>
+
+        <h2>
+            Less noise.
+            <br>
+            <em>More style.</em>
+        </h2>
+
+        <p>
+            We believe great style doesn't need to shout.
+            Every Royal Threads piece is selected with
+            quality, versatility and modern design in mind.
+        </p>
+
+        <a href="#about" class="text-link">
+            DISCOVER OUR STORY
+            <i class="fa-solid fa-arrow-right"></i>
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section class="about" id="about">
+
+    <div class="about-content">
+
+        <p class="eyebrow">ABOUT ROYAL THREADS</p>
+
+        <h2>
+            Fashion is not
+            <br>
+            <em>what you wear.</em>
+            <br>
+            It's how you feel.
+        </h2>
+
+        <p>
+            Royal Threads is a modern fashion destination
+            created for people who believe in effortless,
+            confident style.
+        </p>
+
+        <p>
+            From everyday essentials to statement pieces,
+            our collection brings together contemporary
+            design and comfortable quality.
+        </p>
+
+        <button class="outline-btn">
+            LEARN MORE
+        </button>
+
+    </div>
+
+
+    <div class="about-stats">
+
+        <div class="stat">
+            <strong>500+</strong>
+            <span>Styles</span>
+        </div>
+
+        <div class="stat">
+            <strong>10K+</strong>
+            <span>Happy Customers</span>
+        </div>
+
+        <div class="stat">
+            <strong>4.9</strong>
+            <span>Customer Rating</span>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- NEWSLETTER -->
+
+<section class="newsletter">
+
+    <div>
+
+        <p class="eyebrow">STAY IN THE LOOP</p>
+
+        <h2>
+            Get first access to
+            <em>new drops.</em>
+        </h2>
+
+    </div>
+
+    <form onsubmit="subscribe(event)">
+
+        <input
+            type="email"
+            id="emailInput"
+            placeholder="Enter your email address"
+            required>
+
+        <button type="submit">
+            SUBSCRIBE
+            <i class="fa-solid fa-arrow-right"></i>
+        </button>
+
+    </form>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="footer-main">
+
+        <div class="footer-brand">
+
+            <a href="#" class="logo">
+                <span>ROYAL</span>
+                <small>THREADS</small>
+            </a>
+
+            <p>
+                Modern fashion for modern lifestyles.
+                Designed to make you feel confident.
+            </p>
+
+            <div class="socials">
+
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#"><i class="fa-brands fa-pinterest-p"></i></a>
+                <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h4>SHOP</h4>
+
+            <a href="#collection" onclick="filterProducts('Men')">Men</a>
+            <a href="#collection" onclick="filterProducts('Women')">Women</a>
+            <a href="#collection" onclick="filterProducts('Kids')">Kids</a>
+            <a href="#collection">New Arrivals</a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h4>HELP</h4>
+
+            <a href="#">Contact Us</a>
+            <a href="#">Shipping & Delivery</a>
+            <a href="#">Returns & Refunds</a>
+            <a href="#">FAQs</a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h4>LEGAL</h4>
+
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms & Conditions</a>
+            <a href="#">Refund Policy</a>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <span>© 2026 Royal Threads. All rights reserved.</span>
+
+        <span>
+            DEMO E-COMMERCE WEBSITE
+        </span>
+
+    </div>
+
+</footer>
+
+
+<!-- CART -->
+
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+
+<aside class="cart-sidebar" id="cartSidebar">
+
+    <div class="cart-header">
+
+        <div>
+            <span>YOUR BAG</span>
+            <h3>Shopping Cart</h3>
+        </div>
+
+        <button onclick="closeCart()">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+    </div>
+
+
+    <div class="cart-items" id="cartItems">
+
+        <div class="empty-cart">
+
+            <i class="fa-solid fa-bag-shopping"></i>
+
+            <h3>Your bag is empty</h3>
+
+            <p>Add something you love.</p>
+
+            <button onclick="closeCart(); location.href='#collection'">
+                SHOP NOW
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="cart-footer">
+
+        <div class="subtotal">
+            <span>SUBTOTAL</span>
+            <strong id="cartTotal">₹0</strong>
+        </div>
+
+        <p class="cart-note">
+            Taxes and shipping calculated at checkout.
+        </p>
+
+        <button class="checkout-btn" onclick="checkout()">
+            PROCEED TO CHECKOUT
+            <i class="fa-solid fa-arrow-right"></i>
+        </button>
+
+    </div>
+
+</aside>
+
+
+<!-- PRODUCT MODAL -->
+
+<div class="modal-overlay" id="productModal">
+
+    <div class="product-modal">
+
+        <button class="modal-close" onclick="closeModal()">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <div class="modal-image">
+
+            <img id="modalImage" src="" alt="Product">
+
+        </div>
+
+        <div class="modal-details">
+
+            <span class="modal-category" id="modalCategory"></span>
+
+            <h2 id="modalName"></h2>
+
+            <div class="modal-rating">
+                ★★★★★
+                <span id="modalRating"></span>
+            </div>
+
+            <p id="modalDescription"></p>
+
+            <div class="modal-price" id="modalPrice"></div>
+
+
+            <div class="selection">
+
+                <label>SELECT SIZE</label>
+
+                <div class="sizes">
+
+                    <button onclick="selectSize(this)">S</button>
+                    <button class="selected" onclick="selectSize(this)">M</button>
+                    <button onclick="selectSize(this)">L</button>
+                    <button onclick="selectSize(this)">XL</button>
+                    <button onclick="selectSize(this)">XXL</button>
+
+                </div>
+
+            </div>
+
+
+            <div class="selection">
+
+                <label>SELECT COLOR</label>
+
+                <div class="colors">
+
+                    <button class="color black selected"
+                            onclick="selectColor(this)"></button>
+
+                    <button class="color white"
+                            onclick="selectColor(this)"></button>
+
+                    <button class="color beige"
+                            onclick="selectColor(this)"></button>
+
+                </div>
+
+            </div>
+
+
+            <button
+                class="modal-add"
+                id="modalAddButton">
+
+                ADD TO BAG
+                <i class="fa-solid fa-bag-shopping"></i>
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- TOAST -->
+
+<div class="toast" id="toast">
+
+    <i class="fa-solid fa-circle-check"></i>
+
+    <span id="toastMessage">
+        Added to your bag
+    </span>
+
+</div>
+
+
+<script>
+    const products = {{ products | tojson }};
+</script>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
